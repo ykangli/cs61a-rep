@@ -195,6 +195,10 @@ def sprout_leaves(t, leaves):
           2
     """
     "*** YOUR CODE HERE ***"
+    if is_leaf(t):  # 如果该树无分支，直接添加
+        return tree(label(t), [tree(leaf) for leaf in leaves])
+    return tree(label(t), [sprout_leaves(s, leaves) for s in branches(t)]) # 递归调用。即为，给该树的各个分支的叶子节点添加相应叶子
+
 
 # Abstraction tests for sprout_leaves and berry_finder
 def check_abstraction():
@@ -253,7 +257,7 @@ def coords(fn, seq, lower, upper):
     [[-2, 4], [1, 1], [3, 9]]
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    return [[i, fn(i)] for i in seq if fn(i) >= lower and fn(i) <= upper]
 
 
 def riffle(deck):
@@ -266,7 +270,9 @@ def riffle(deck):
     [0, 10, 1, 11, 2, 12, 3, 13, 4, 14, 5, 15, 6, 16, 7, 17, 8, 18, 9, 19]
     """
     "*** YOUR CODE HERE ***"
-    return _______
+    return [deck[(i % 2) * len(deck) // 2 + i // 2] for i in range(len(deck))]
+
+
 
 
 def add_trees(t1, t2):
@@ -456,3 +462,26 @@ def copy_tree(t):
     """
     return tree(label(t), [copy_tree(b) for b in branches(t)])
 
+def height(t):
+    if is_leaf:
+        return 0
+    return 1 + max([height(branch) for branch in branches])
+
+def max_path_sum(t):
+    if is_leaf(t):  #是叶子节点，直接返回该值
+        return label(t)
+    else:
+        return label(t) + max([max_path_sum(b) for b in branches(t)]) # 返回该节点的值 + 分支的最大值
+    
+
+def square_tree(t):
+    sq_branches = [square_tree(branch) for branch in branches(t)]
+    return tree(label(t)**2, sq_branches)
+
+def find_path(tree, x):
+    if label(tree) == x:
+        return [label(tree)]
+    for branch in branches(tree):
+        path = find_path(branch)
+        if path:
+            return [label(tree)] + path
