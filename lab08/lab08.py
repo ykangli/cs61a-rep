@@ -8,7 +8,16 @@ def convert_link(link):
     []
     """
     "*** YOUR CODE HERE ***"
+    result_list = []
+    while link is not Link.empty:
+        result_list.append(link.first)
+        link = link.rest
+    return result_list
 
+    # using recursion
+    # if link is not Link.empty:
+    #     return []
+    # return [link.first] + convert_link(link.rest)
 
 
 def every_other(s):
@@ -29,6 +38,11 @@ def every_other(s):
     Link(4)
     """
     "*** YOUR CODE HERE ***"
+    if s.rest is Link.empty or s is Link.empty:
+        return
+    else:
+        s.rest = s.rest.rest
+        every_other(s.rest)
 
 
 def cumulative_mul(t):
@@ -41,6 +55,22 @@ def cumulative_mul(t):
     Tree(105, [Tree(15, [Tree(5)]), Tree(7)])
     """
     "*** YOUR CODE HERE ***"
+    # if t.is_leaf:
+    #     return
+    # else:
+    #     for b in t.branches:
+    #         cumulative_mul(b)
+    #     total = t.label
+    #     for b in t.branches:
+    #         total *= b.label
+    #     t.label = total
+    for b in t.branches:
+        cumulative_mul(b)
+    total = t.label
+    for b in t.branches:
+        total *= b.label
+    t.label = total
+
 
 
 def has_cycle(link):
@@ -58,6 +88,16 @@ def has_cycle(link):
     False
     """
     "*** YOUR CODE HERE ***"
+    links = []
+    while link is not Link.empty:
+        if link in links:
+            return True
+        links.append(link)
+        link = link.rest
+    return False
+
+
+
 
 def has_cycle_constant(link):
     """Return whether link contains a cycle.
@@ -71,6 +111,7 @@ def has_cycle_constant(link):
     False
     """
     "*** YOUR CODE HERE ***"
+
 
 
 def reverse_other(t):
@@ -87,6 +128,7 @@ def reverse_other(t):
     Tree(1, [Tree(8, [Tree(3, [Tree(5), Tree(4)]), Tree(6, [Tree(7)])]), Tree(2)])
     """
     "*** YOUR CODE HERE ***"
+
 
 
 class Link:

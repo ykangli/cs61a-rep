@@ -1,5 +1,8 @@
-from lab08 import *
+branches = [1, 2, 3, 4]
 
-link = Link(5, Link(6, Link(7)))
+for b in branches:
+    b = b + 1
 
-print(link)
+print(branches)
+
+
