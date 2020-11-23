@@ -1,0 +1,36 @@
+python中有无向java中的 private public
+
+armor 对象属性
+ 1.It represents the amount of health the insect has left, so the
+   insect is eliminated when it reaches 0
+2.each Ant instance needs its own armor value
+
+
+damage 类属性 
+ all Ants of the same subclass deal the same damage
+
+Ant和Bee对象共同之处：
+Ants and Bees both have the attributes armor, damage, and place
+   and the methods reduce_armor and action
+
+
+一个place里的昆虫数目： 最多一只ant和多只bee
+
+
+bee每一轮的动作：
+The bee stings the ant in its place or moves to the next place
+ if there is no ant in its place
+
+什么时候游戏结束：
+ When any bee reaches the end of the tunnel or when the Queen Ant is killed
+
+food_cost 类属性 
+ all Ants of the same subclass cost the same to deploy
+
+ p is a Place whose entrance is q and exit is r 
+ p.entrance first set to a non-None value  When q is constructed
+ p.exit first set to a non-None value When p is constructed
+ 
+
+is or not queen:  instance attribute
+number of queens : class attribute
