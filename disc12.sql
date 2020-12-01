@@ -67,3 +67,4 @@ SELECT a.professor, b.professor, a.courese FROM num_taught AS a, num_taught AS b
 SELECT a.professor, b.professor FROM courese AS a, courese AS b
  WHERE a.professor > b.professor AND a.semester = b.semester AND a.courese = b.courese
   GROUP BY a.courese, a.professor, b.professor HAVING COUNT(*) > 1; 
+  
